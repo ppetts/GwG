@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
-<html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width"/>
@@ -16,9 +16,8 @@
     
 </head>
 <body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
-    
-    <div lang="en" th:replace="fragments/footer :: footer"> </div>
+    <p>Get your greetingz <a href="/greeting">here</a></p>
+    <div lang="en" th:replace="templates/footer :: footer"> </div>
     
 </body>
 </html>
