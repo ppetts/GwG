@@ -1,0 +1,34 @@
+/*C21*/SET SCHEMA PUBLIC
+drop table hospital if exists
+drop table staff if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table hospital (hospital_id bigint not null, address1 varchar(255), address2 varchar(255), address3 varchar(255), county varchar(255), name varchar(255), postcode varchar(255), telephone varchar(255), town varchar(255), primary key (hospital_id))
+create table staff (staff_id varchar(255) not null, address1 varchar(255), address2 varchar(255), address3 varchar(255), postcode varchar(255), telephone varchar(255), town varchar(255), primary key (staff_id))
+INSERT INTO HOSPITAL VALUES(10,'TODO',NULL,NULL,NULL,'Ormskirk',NULL,NULL,NULL)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+DELETE FROM HOSPITAL WHERE HOSPITAL_ID=10
+INSERT INTO HOSPITAL VALUES(10,'TODO',NULL,NULL,NULL,'Addenbrooke''s Hospital',NULL,NULL,NULL)
+COMMIT
+drop table hospital if exists
+drop table staff if exists
+drop sequence hibernate_sequence
+DISCONNECT
+/*C20*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C17*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C15*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+DISCONNECT

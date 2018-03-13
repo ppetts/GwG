@@ -1,0 +1,26 @@
+/*C22*/SET SCHEMA PUBLIC
+drop table hospital if exists
+drop table staff if exists
+create table hospital (hospital_id varchar(255) not null, address1 varchar(255), address2 varchar(255), address3 varchar(255), county varchar(255), name varchar(255), postcode varchar(255), telephone varchar(255), town varchar(255), primary key (hospital_id))
+create table staff (staff_id varchar(255) not null, address1 varchar(255), address2 varchar(255), address3 varchar(255), postcode varchar(255), telephone varchar(255), town varchar(255), primary key (staff_id))
+drop table hospital if exists
+drop table staff if exists
+DISCONNECT
+/*C21*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C20*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C17*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C15*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+DISCONNECT
