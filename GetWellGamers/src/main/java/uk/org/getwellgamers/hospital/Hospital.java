@@ -1,13 +1,15 @@
 package uk.org.getwellgamers.hospital;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Hospital {
 	
+	
+	//TODO - Auto generate id
 	@Id
-	String hospitalId;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private long hospitalId;
 	String name;
 	String address1;
 	String address2;
@@ -22,12 +24,12 @@ public class Hospital {
 	}
 
 	
-	public String getHospitalId() {
+	public long getHospitalId() {
 		return hospitalId;
 	}
 
 
-	public void setHospitalId(String id) {
+	public void setHospitalId(long id) {
 		this.hospitalId = id;
 	}
 
