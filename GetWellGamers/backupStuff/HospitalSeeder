@@ -1,0 +1,51 @@
+//		Hospital hosp = new Hospital();
+//		hosp.setName("Ormskirk & District General Hospital");
+//		hosp.setAddress1("Wigan Rd");
+//		hosp.setTown("Ormskirk");
+//		hosp.setPostcode("L39 2AZ");
+//		Hospitals.add(hosp);
+//				
+//		Hospital hosp2 = new Hospital();
+//		hosp2.setName("Royal Preston Hospital");
+//		hosp2.setAddress1("Sharoe Green Lane North");
+//		hosp2.setAddress2("Fulwood");
+//		hosp2.setTown("Preston");
+//		hosp2.setPostcode("PR2 9HT");
+//		Hospitals.add(hosp2);
+//				
+//		Hospital hosp3 = new Hospital();
+//		hosp3.setName("Chorley and South Ribble District General Hospital");
+//		hosp3.setAddress1("Preston Road");
+//		hosp3.setTown("Chorley");
+//		hosp3.setPostcode("PR7 1PP");
+//		Hospitals.add(hosp3);
+//		
+//		Hospital hosp4 = new Hospital();
+//		hosp4.setName("Royal Albert Edward Infirmary");
+//		hosp4.setAddress1("");
+//		hosp4.setTown("");
+//		hosp4.setPostcode("");
+//		Hospitals.add(hosp4);
+//		
+//		Hospital hosp5 = new Hospital();
+//		hosp5.setName("");
+//		hosp5.setAddress1("");
+//		hosp5.setTown("");
+//		hosp5.setPostcode("");
+//		Hospitals.add(hosp5);
+//		
+//		Hospital hosp6 = new Hospital();
+//		hosp6.setName("");
+//		hosp6.setAddress1("");
+//		hosp6.setTown("");
+//		hosp6.setPostcode("");
+//		Hospitals.add(hosp6);
+//		
+//		Hospital hosp7 = new Hospital();
+//		hosp7.setName("");
+//		hosp7.setAddress1("");
+//		hosp7.setTown("");
+//		hosp7.setPostcode("");
+//		Hospitals.add(hosp7);
+//		
+//	
