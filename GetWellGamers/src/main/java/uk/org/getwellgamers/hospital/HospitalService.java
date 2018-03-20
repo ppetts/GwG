@@ -19,6 +19,7 @@ public class HospitalService {
 	}
 
 	public Hospital getHospital(String id) {
+		System.out.println("getHospital:" + id);
 		return hospRep.findOne(id);
 	}
 
@@ -33,6 +34,4 @@ public class HospitalService {
 	public void addHospital(Hospital hosp) {
 		hospRep.save(hosp);
 	}
-
-
 }

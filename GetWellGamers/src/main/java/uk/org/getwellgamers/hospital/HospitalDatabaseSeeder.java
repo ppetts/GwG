@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 
 @Order(1)
 @Component
-public class DatabaseSeeder implements CommandLineRunner {
+public class HospitalDatabaseSeeder implements CommandLineRunner {
 
 	//Generate the Hospital Data for the Database 
 	private HospitalRepositry hospitalResp;
 
 	@Autowired
-	public DatabaseSeeder(HospitalRepositry hospitalResp) {
+	public HospitalDatabaseSeeder(HospitalRepositry hospitalResp) {
 		this.hospitalResp = hospitalResp;
 	}
 
@@ -26,50 +26,56 @@ public class DatabaseSeeder implements CommandLineRunner {
 
 		ArrayList<Hospital> Hospitals = new ArrayList<Hospital>();
 
-		//TODO Read the CSV from gov website
-
-		//Read this dynamically?  What if the site is down?
 		//http://media.nhschoices.nhs.uk/data/foi/Hospital.csv
-		//CSV might be saftest, can always redonload if required.  Fairly static data, & we have the option to manipulate
-		Scanner scanner = new Scanner(new File("C:\\Users\\pettsp2\\Desktop\\TM470\\HospitalTab.csv"));
-		//  scanner.useDelimiter("\t");
+		Scanner scanner = new Scanner(new File("C:\\Users\\pettsp2\\Desktop\\TM470\\HospitalDataClean.csv"));
+		scanner.useDelimiter("\t");
 		while(scanner.hasNextLine()){
 
 			String line = scanner.nextLine();
 			String[] hospDetails = line.split("\t");
 
 			Hospital hosp = new Hospital();
-			
+
 			if(hospDetails.length < 22) {
-				System.out.println("Adding : " + hospDetails[7] + " | " + hospDetails.length);
-								
-			} else {						
-				hosp.setOrganisationID(hospDetails[0]);
+				System.out.println("Not Adding : " + hospDetails[7] + " | " + hospDetails.length);
+
+			} else {	
+
+				System.out.println("Adding " + hospDetails[7]);
+				hosp.setOrganisationID(hospDetails[0].replace("\"", ""));
 				hosp.setOrganisationCode(hospDetails[1]);
 				hosp.setOrganisationType(hospDetails[2]);
 				hosp.setSubType(hospDetails[3]);
 				hosp.setSector(hospDetails[4]);
 				hosp.setOrganisationStatus(hospDetails[5]);
 				hosp.setIsPimsManaged(Boolean.getBoolean(hospDetails[6]));
-				hosp.setOrganisationName(hospDetails[7]);
+				hosp.setOrganisationName(hospDetails[7].replace("\"", ""));
 				hosp.setAddress1(hospDetails[8]);
 				hosp.setAddress2(hospDetails[9]);
 				hosp.setAddress3(hospDetails[10]);
 				hosp.setCity(hospDetails[11]);
 				hosp.setCounty(hospDetails[12]);
 				hosp.setPostcode(hospDetails[13]);
-//				hosp.setLatitude(Long.parseLong(hospDetails[14]));
-//				hosp.setLongitude(Long.parseLong(hospDetails[15]));
+
+				try {
+					hosp.setLatitude(Double.parseDouble(hospDetails[14]));
+					hosp.setLongitude(Double.parseDouble(hospDetails[15]));	
+				} catch (Exception e) {
+					System.out.println("No Lat / Long for " + hospDetails[7]);
+				}
+
 				hosp.setParentODSCode(hospDetails[16]);
 				hosp.setParentName(hospDetails[17]);
 				hosp.setPhone(hospDetails[18]);
 				hosp.setEmail(hospDetails[19]);
 				hosp.setWebsite(hospDetails[20]);
-				hosp.setFax(hospDetails[21]);
+				hosp.setFax(hospDetails[21].replace("\"", ""));
 				Hospitals.add(hosp);		  	
 			}	 
 		}
 		scanner.close();
 		hospitalResp.save(Hospitals);
+		
+		System.out.println("Hospitals added :" + Hospitals.size());
 	}
 }

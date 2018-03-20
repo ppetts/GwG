@@ -25,17 +25,14 @@ public class HospitalController {
 		return hospitalService.getHospital(id);
 	}
 
-
 	@RequestMapping(method=RequestMethod.POST, value="/hospitals/{id}")
 	public Hospital addHospital(@RequestBody Hospital hospital) {
 		hospitalService.addHospital(hospital);
 		return hospital;
 	}
 
-
 	@RequestMapping(method=RequestMethod.DELETE, value="/hospitals/{id}")
 	public void deleteHospital(@RequestBody Hospital hospital) {
 		hospitalService.deleteHospital(hospital);
 	}
-
 }

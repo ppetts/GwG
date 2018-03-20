@@ -20,8 +20,8 @@ public class Hospital {
 	private String City;
 	private String County;	
 	private String Postcode;
-	private long Latitude;
-	private long Longitude;
+	private double Latitude;
+	private double Longitude;
 	private String ParentODSCode;
 	private String ParentName;
 	private String Phone;
@@ -145,19 +145,19 @@ public class Hospital {
 		Postcode = postcode;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return Latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		Latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public double getLongitude() {
 		return Longitude;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		Longitude = longitude;
 	}
 

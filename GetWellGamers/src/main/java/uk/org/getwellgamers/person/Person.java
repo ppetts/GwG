@@ -2,12 +2,10 @@ package uk.org.getwellgamers.person;
 
 public abstract class Person {
 
-	private String personId;
-	private String title;
-	private String forename;
-	private String surname;
-	private String mobilenumber;
-	private String telephonenumber;
-		
-	
+	protected String personId;
+	protected String title;
+	protected String forename;
+	protected String surname;
+	protected String mobilenumber;
+	protected String telephonenumber;	
 }
