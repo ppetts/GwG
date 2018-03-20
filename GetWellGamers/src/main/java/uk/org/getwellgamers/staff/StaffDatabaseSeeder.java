@@ -33,8 +33,9 @@ public class StaffDatabaseSeeder implements CommandLineRunner {
 		staff.setAddress3("Mawdesley");
 		staff.setTown("Ormskirk");
 		staff.setPostcode("L40 3SF");
-		staff.setTelephone("07782505928");
-		
+		staff.setMobilenumber("07782505928");
+		staff.setTelephonenumber("01704260510");
+	
 		allStaff.add(staff);
 		
 			

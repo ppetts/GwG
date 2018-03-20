@@ -66,12 +66,4 @@ public class Staff extends Person {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
-	public String getTitle(String title) {
-		return this.title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
 }

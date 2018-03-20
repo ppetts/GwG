@@ -25,13 +25,11 @@ public class StaffController {
 		return staffService.getStaff(id);
 	}
 
-
 	@RequestMapping(method=RequestMethod.POST, value="/staff/{id}")
 	public Staff addStaff(@RequestBody Staff staff) {
 		staffService.addStaff(staff);
 		return staff;
 	}
-
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/staff/{id}")
 	public void deleteStaff(@RequestBody Staff staff) {
