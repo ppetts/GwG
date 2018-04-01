@@ -15,7 +15,7 @@ import uk.org.getwellgamers.person.Person;
 @Component
 public class StaffDatabaseSeeder implements CommandLineRunner {
 
-	//Generate the Hospital Data for the Database 
+	//Generate the Staff Data for the Database 
 	private StaffRepositry staffResp;
 
 	@Autowired
@@ -55,10 +55,6 @@ public class StaffDatabaseSeeder implements CommandLineRunner {
 		staff2.setMobilenumber("07782505928");
 		staff2.setTelephonenumber("01704260510");
 		allStaff.add(staff2);
-		
-		
-		
-		
 					
 		staffResp.save(allStaff);
 		

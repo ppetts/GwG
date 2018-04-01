@@ -2,7 +2,8 @@
 drop table hospital if exists
 drop table person if exists
 create table hospital (organisationid varchar(255) not null, address1 varchar(255), address2 varchar(255), address3 varchar(255), city varchar(255), county varchar(255), email varchar(255), fax varchar(255), is_pims_managed boolean not null, latitude double not null, longitude double not null, organisation_code varchar(255), organisation_name varchar(255), organisation_status varchar(255), organisation_type varchar(255), parent_name varchar(255), parentodscode varchar(255), phone varchar(255), postcode varchar(255), sector varchar(255), sub_type varchar(255), website varchar(255), primary key (organisationid))
-create table person (dtype varchar(31) not null, person_id varchar(255) not null, forename varchar(255), mobilenumber varchar(255), surname varchar(255), telephonenumber varchar(255), title integer, address1 varchar(255), address2 varchar(255), address3 varchar(255), postcode varchar(255), town varchar(255), primary key (person_id))
+create table person (dtype varchar(31) not null, person_id varchar(255) not null, forename varchar(255), mobilenumber varchar(255), surname varchar(255), telephonenumber varchar(255), title integer, address1 varchar(255), address2 varchar(255), address3 varchar(255), postcode varchar(255), town varchar(255), organisationid varchar(255), primary key (person_id))
+alter table person add constraint FK8fwr9cv4j5ab9nj8t189p9pv4 foreign key (organisationid) references hospital
 INSERT INTO HOSPITAL VALUES('OrganisationID','Address1','Address2','Address3','City','County','Email','Fax',FALSE,0.0E0,0.0E0,'OrganisationCode','OrganisationName','OrganisationStatus','OrganisationType','ParentName','ParentODSCode','Phone','Postcode','Sector','SubType','Website')
 INSERT INTO HOSPITAL VALUES('1421','Swinemoor Lane','','','Beverley','East Yorkshire','newhospital@nhs.net','',FALSE,53.85313415527344E0,-0.4114723205566406E0,'RV9HE','East Riding Community Hospital','Visible','Hospital','Humber NHS Foundation Trust','RV9','01482 886600','HU17 0FA','NHS Sector','Mental Health Hospital','http://www.humber.nhs.uk')
 INSERT INTO HOSPITAL VALUES('1611','Zachary Merton Community Hospital','Glenville Road','Rustington','Littlehampton','Sussex','','',FALSE,50.80788040161133E0,-0.5006316304206848E0,'5P603','Zachary Merton Community Hospital ','Visible','Hospital','Sussex Community NHS Trust','RDR','01903 858100','BN16 2EB','NHS Sector','Hospital','http://www.sussexcommunity.nhs.uk/services')
@@ -1098,6 +1099,9 @@ INSERT INTO HOSPITAL VALUES('3774995','','Lothingland','','Oulton','Suffolk','',
 INSERT INTO HOSPITAL VALUES('3775034','','3 and 4 Walker Close','','Ipswich','Suffolk','','',FALSE,52.05271911621094E0,1.1968756914138794E0,'RMYMW','Walker Close','Visible','Hospital','Norfolk and Suffolk NHS Foundation Trust','RMY','01473 237003','IP3 8LY','NHS Sector','Mental Health Hospital','http://www.nsft.nhs.uk')
 INSERT INTO HOSPITAL VALUES('3775035','Stepping Out','1B St Catherines Way','','Gorleston on Sea','Norfolk','','',FALSE,52.57296371459961E0,1.716928482055664E0,'RMY55','St Catherines Way','Visible','Hospital','Norfolk and Suffolk NHS Foundation Trust','RMY','01493 444465','NR31 7QB','NHS Sector','Mental Health Hospital','http://www.nsft.nhs.uk')
 COMMIT
-INSERT INTO PERSON VALUES('Staff','001','James','07876 133 461','Stewart','',0,'4 2/1 Glencairn Drive','','','G41 4QN','Glasgow')
-INSERT INTO PERSON VALUES('Staff','002','Phil','07782505928','Petts','01704260510',0,'Harrock Hill View','Bradshaw Lane','Mawdesley','L40 3SF','Ormskirk')
+INSERT INTO PERSON VALUES('Staff','001','James','07876 133 461','Stewart','',0,'4 2/1 Glencairn Drive','','','G41 4QN','Glasgow',NULL)
+INSERT INTO PERSON VALUES('Staff','002','Phil','07782505928','Petts','01704260510',0,'Harrock Hill View','Bradshaw Lane','Mawdesley','L40 3SF','Ormskirk',NULL)
+COMMIT
+INSERT INTO PERSON VALUES('HospitalStaff','hs001','Holmes','07876 133 461','Sherlock','',3,NULL,NULL,NULL,NULL,NULL,NULL)
+INSERT INTO PERSON VALUES('HospitalStaff','hs002','Sarah','07782505928','Smith','01704260510',2,NULL,NULL,NULL,NULL,NULL,NULL)
 COMMIT

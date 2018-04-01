@@ -32,7 +32,7 @@ public class Hospital {
 	public Hospital() {
 		super();
 	}
-
+	
 	public String getOrganisationID() {
 		return OrganisationID;
 	}
