@@ -1,9 +1,18 @@
 package uk.org.getwellgamers.person;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+
+@Entity
+@Inheritance
 public abstract class Person {
 
+	public enum TITLE{Mr, Mrs, Miss, Dr};
+		
+	@Id
 	private String personId;
-	private String title;
+	private TITLE title;
 	private String forename;
 	private String surname;
 	private String mobilenumber;
@@ -15,12 +24,14 @@ public abstract class Person {
 	public void setPersonId(String personId) {
 		this.personId = personId;
 	}
-	public String getTitle() {
+	
+	public TITLE getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
+	public void setTitle(TITLE title) {
 		this.title = title;
 	}
+
 	public String getForename() {
 		return forename;
 	}

@@ -1,35 +1,22 @@
 package uk.org.getwellgamers.staff;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import uk.org.getwellgamers.person.Person;
 
 @Entity
 public class Staff extends Person {
 
-	@Id
-	private String staffId;
 	private String address1;
 	private String address2;
 	private String address3;
 	private String town;
 	private String postcode;
-	private String telephone;
-	
 	
 	public Staff() {
 		super();
 	}
-	
-	public String getStaffId() {
-		return staffId;
-	}
-
-	public void setStaffId(String id) {
-		this.staffId = id;
-	}
-		
+			
 	public String getAddress1() {
 		return address1;
 	}
@@ -59,11 +46,5 @@ public class Staff extends Person {
 	}
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
-	}
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
 	}
 }

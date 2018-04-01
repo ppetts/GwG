@@ -17,9 +17,5 @@ public class HospitalStaff extends Person {
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
-	}
-	
-	
-	
-	
+	}	
 }
