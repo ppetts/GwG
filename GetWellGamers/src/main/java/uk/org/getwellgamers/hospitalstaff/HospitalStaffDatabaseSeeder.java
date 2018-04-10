@@ -15,7 +15,7 @@ import uk.org.getwellgamers.person.Person;
 @Component
 public class HospitalStaffDatabaseSeeder implements CommandLineRunner {
 
-	//Generate the Hospital Data for the Database 
+	//Generate the Donation Data for the Database 
 	private HospitalStaffRepositry hospStaffResp;
 	private HospitalService hospService;
 	
@@ -57,6 +57,6 @@ public class HospitalStaffDatabaseSeeder implements CommandLineRunner {
 							
 		hospStaffResp.save(allHospStaff);
 		
-		System.out.println("Hospital Staff added :" + allHospStaff.size());
+		System.out.println("Donation Staff added :" + allHospStaff.size());
 	}
 }
