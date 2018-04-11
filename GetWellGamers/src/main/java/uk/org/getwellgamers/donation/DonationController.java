@@ -15,23 +15,23 @@ public class DonationController {
 	@Autowired
 	DonationService donationService;
 
-	@RequestMapping("/Donations")
+	@RequestMapping("/donation")
 	public List<Donation> getAllDonations() {
 		return donationService.getAllDonations();
 	}
 
-	@RequestMapping("/Donations/{id}")
+	@RequestMapping("/donation/{id}")
 	public Donation getDonation(@PathVariable String id) {
 		return donationService.getDonation(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/Donations/{id}")
+	@RequestMapping(method = RequestMethod.POST, value = "/donation/{id}")
 	public Donation addDonation(@RequestBody Donation donation) {
 		donationService.addDonation(donation);
 		return donation;
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/Donations/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/donation/{id}")
 	public void deleteDonation(@RequestBody Donation donation) {
 		donationService.deleteDonation(donation);
 	}
