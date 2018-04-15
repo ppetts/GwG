@@ -12,7 +12,7 @@ import uk.org.getwellgamers.hospitalstaff.HospitalStaff;
 import uk.org.getwellgamers.hospitalstaff.HospitalStaffRepositry;
 import uk.org.getwellgamers.hospitalstaff.HospitalStaffService;
 
-@Order(1)
+@Order(4)
 @Component
 public class DonationDatabaseSeeder implements CommandLineRunner {
 
@@ -29,7 +29,7 @@ public class DonationDatabaseSeeder implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
-
+		
 		ArrayList<Donation> allDonation = new ArrayList<Donation>();
 
 		Donation donation = new Donation();
@@ -38,6 +38,8 @@ public class DonationDatabaseSeeder implements CommandLineRunner {
 		HospitalStaff hospStaff = hospStaffService.getStaff("hs001");
 		if(null == hospStaff) {
 			System.err.println("Staff null : hs001");
+		} else {
+			System.out.println(hospStaff.toString());
 		}
 		donation.setHospitalStaff(hospStaff);
 		allDonation.add(donation);
