@@ -31,6 +31,7 @@ public class StockDatabaseSeeder implements CommandLineRunner {
 		ArrayList<Stock> allstock = new ArrayList<Stock>();
 
 		Stock stock = new Stock();
+		stock.setStockId("STK0000001");
 		
 		Hospital hosp = hospService.getHospital("NTN41");
 		if(null!=hosp) {

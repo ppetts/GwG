@@ -15,23 +15,23 @@ public class StockController {
 	@Autowired
 	StockService StockService;
 
-	@RequestMapping("/Stock")
-	public List<Stock> getAllHosptials() {
+	@RequestMapping("/stock")
+	public List<Stock> getAllStock() {
 		return StockService.getAllStocks();
 	}
 
-	@RequestMapping("/Stock/{id}")
+	@RequestMapping("/stock/{id}")
 	public Stock getStock(@PathVariable String id) {
 		return StockService.getStock(id);
 	}
 
-	@RequestMapping(method=RequestMethod.POST, value="/Stock/{id}")
+	@RequestMapping(method=RequestMethod.POST, value="/stock/{id}")
 	public Stock addStock(@RequestBody Stock Stock) {
 		StockService.addStock(Stock);
 		return Stock;
 	}
 
-	@RequestMapping(method=RequestMethod.DELETE, value="/Stock/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/stock/{id}")
 	public void deleteStock(@RequestBody Stock Stock) {
 		StockService.deleteStock(Stock);
 	}

@@ -9,23 +9,21 @@ import uk.org.getwellgamers.staff.Staff;
 @Entity
 public class Stock {
 	
-	@Id
+	@Id   //   @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String stockId;
 	private String brand;
 	private String model;
 	private String notes;
 	private String status;
 	
-	//@ManyToOne(cascade = CascadeType.ALL, targetEntity = Hospital.class)
-	//@JoinColumn(name="OrganisationID")
-	@Embedded
-	private Hospital hospital;
-	
-//	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Donation.class)
-//	@JoinColumn(name="DonationID")
-	@Embedded
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Donation.class)
+	@JoinColumn(name="DonationID")
 	private Donation donation;
-	
+		
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Hospital.class)
+	@JoinColumn(name="OrganisationID")
+	private Hospital hospital;
+		
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Staff.class)
 	@JoinColumn(name="StaffID")
 	private Staff staff;
