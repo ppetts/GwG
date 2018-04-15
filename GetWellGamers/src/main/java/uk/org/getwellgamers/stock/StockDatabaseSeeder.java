@@ -39,6 +39,8 @@ public class StockDatabaseSeeder implements CommandLineRunner {
 		}
 		
 		stock.setBrand("Sony");
+		stock.setModel("PS4");
+		stock.setStatus("Working");
 		allstock.add(stock);
 		
 
