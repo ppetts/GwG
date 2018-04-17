@@ -26,7 +26,6 @@ public class HospitalDatabaseSeeder implements CommandLineRunner {
 
 		ArrayList<Hospital> Hospitals = new ArrayList<Hospital>();
 
-		//http://media.nhschoices.nhs.uk/data/foi/Donation.csv
 		Scanner scanner = new Scanner(new File("C:\\Users\\pettsp2\\Desktop\\TM470\\HospitalDataClean.csv"));
 		scanner.useDelimiter("\t");
 		while(scanner.hasNextLine()){
