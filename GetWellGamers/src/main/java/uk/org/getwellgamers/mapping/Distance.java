@@ -1,9 +1,5 @@
 package uk.org.getwellgamers.mapping;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -12,16 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uk.org.getwellgamers.staff.Staff;
-import uk.org.getwellgamers.staff.StaffRepositry;
 import uk.org.getwellgamers.staff.StaffService;
 
 //import com.google.maps.GeolocationApi.Response;
@@ -37,11 +26,10 @@ public class Distance implements CommandLineRunner{
 	private static final Logger log = LoggerFactory.getLogger(Distance.class);
 	
 	
-	public TreeSet<Staff> getClosestStaff(int howMany, String toPostcode) {
+	public TreeSet<DistanceWrapper> getClosestStaff(int howMany, String toPostcode) {
 		
 		//TODO Add URL Mapping?
-		//Map<Double,Staff> distanceMap = new TreeMap<Double,Staff>();
-		TreeSet<Staff> distanceSet = new TreeSet<Staff>();
+		TreeSet<DistanceWrapper> distanceSet = new TreeSet<DistanceWrapper>();
 		
 		List<Staff> staffList = staffservice.getAllStaff();
 		Staff thisStaff = null;
@@ -51,22 +39,16 @@ public class Distance implements CommandLineRunner{
 			System.out.println("POSTCODE=" + thisStaff.getPostcode());
 			
 			double dist = getDistance(thisStaff.getPostcode(), toPostcode);
-			System.out.println("dist=" + dist);
 			
-			//TODO add 'distance' to the staff instance
-			
-			distanceSet.add(thisStaff);
-			
+			DistanceWrapper distWrap = new DistanceWrapper(thisStaff, dist);
+			distanceSet.add(distWrap);
 		}
 		
 		return distanceSet;
 	}
 	
-	
-	
-	
-	public double getDistance(String pc1, String pc2) {
 
+	public double getDistance(String pc1, String pc2) {
 		return ThreadLocalRandom.current().nextDouble(0, 1000);
 	}
 	
@@ -74,8 +56,18 @@ public class Distance implements CommandLineRunner{
 
 	public void run(String... args) throws Exception {
 		
-		TreeSet<Staff> results = getClosestStaff(2, "L40 3SF");
-		results.toString();
+		TreeSet<DistanceWrapper> results = getClosestStaff(2, "L40 3SF");
+		
+		DistanceWrapper firstDistWrapper = results.first();
+		
+	//	System.out.println("Closest:" + firstDistWrapper.person.getSurname() + "|distance:" + firstDistWrapper.distance);
+		
+		int count = 0;
+		for (DistanceWrapper dw : results) {
+			System.out.println(++count + ":" + dw.person.getSurname() + "|distance:" + dw.distance);
+		}
+		
+						
 		
 //		RestTemplate restTemplate = new RestTemplate();
 //
