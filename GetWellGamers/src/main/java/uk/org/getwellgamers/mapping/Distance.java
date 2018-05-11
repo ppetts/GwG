@@ -37,7 +37,7 @@ public class Distance implements CommandLineRunner{
 	private static final Logger log = LoggerFactory.getLogger(Distance.class);
 	
 	
-	public Set getClosestStaff(int howMany, String toPostcode) {
+	public TreeSet<Staff> getClosestStaff(int howMany, String toPostcode) {
 		
 		//TODO Add URL Mapping?
 		//Map<Double,Staff> distanceMap = new TreeMap<Double,Staff>();
@@ -52,6 +52,8 @@ public class Distance implements CommandLineRunner{
 			
 			double dist = getDistance(thisStaff.getPostcode(), toPostcode);
 			System.out.println("dist=" + dist);
+			
+			//TODO add 'distance' to the staff instance
 			
 			distanceSet.add(thisStaff);
 			
@@ -72,7 +74,8 @@ public class Distance implements CommandLineRunner{
 
 	public void run(String... args) throws Exception {
 		
-		getClosestStaff(2, "L40 3SF");
+		TreeSet<Staff> results = getClosestStaff(2, "L40 3SF");
+		results.toString();
 		
 //		RestTemplate restTemplate = new RestTemplate();
 //
