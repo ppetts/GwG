@@ -10,8 +10,8 @@ public class DistanceController {
 
 	@Autowired
 	DistanceService distanceService;
-
-	@RequestMapping("/distance/getnearest/{frompc}{topc}")
+	//@RequestMapping(value="user", method = RequestMethod.GET)
+	@RequestMapping("/distance/getnearest/{frompc}/{topc}")
 	public DistanceWrapper getStaff(@PathVariable String frompc, @PathVariable String topc) {
 		return new DistanceWrapper(null, 0);
 	}

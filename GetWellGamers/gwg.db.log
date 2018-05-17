@@ -1117,31 +1117,3 @@ INSERT INTO STOCK VALUES('STK0000001','Sony','PS4',NULL,'Working',NULL,NULL,NULL
 COMMIT
 INSERT INTO DONATION VALUES('D000001',NULL)
 COMMIT
-alter table donation drop constraint FKe99y40g45i1yyxp8hist52fgw
-alter table person drop constraint FK8fwr9cv4j5ab9nj8t189p9pv4
-alter table stock drop constraint FKkvuaxdmat73ek33pfwldm5w8o
-alter table stock drop constraint FKabhmf41nrx7f577odkqcjsdxx
-alter table stock drop constraint FKdj4q6ebokpm94ron9xh6hmupw
-drop table donation if exists
-drop table hospital if exists
-drop table person if exists
-drop table stock if exists
-DISCONNECT
-/*C20*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C19*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C18*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C17*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C16*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C15*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C14*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C13*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C12*/SET SCHEMA PUBLIC
-DISCONNECT
