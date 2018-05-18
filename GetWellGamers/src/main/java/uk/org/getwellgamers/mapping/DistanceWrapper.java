@@ -14,6 +14,30 @@ public class DistanceWrapper implements Comparable {
 
 	@Override
 	public int compareTo(Object o) {
-		return (int) (this.distance - ((DistanceWrapper) o).distance);
+		return (int) (this.getDistance() - ((DistanceWrapper) o).getDistance());
 	}
+	
+	@Override
+	public String toString() {
+		return this.person.toString();
+	}
+	
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+	
+	
+	
 }

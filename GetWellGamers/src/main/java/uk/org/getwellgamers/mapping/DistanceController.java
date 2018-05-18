@@ -10,20 +10,10 @@ public class DistanceController {
 
 	@Autowired
 	DistanceService distanceService;
-	//@RequestMapping(value="user", method = RequestMethod.GET)
-	@RequestMapping("/distance/getnearest/{frompc}/{topc}")
-	public DistanceWrapper getStaff(@PathVariable String frompc, @PathVariable String topc) {
-		return new DistanceWrapper(null, 0);
-	}
 
-//	@RequestMapping(method=RequestMethod.POST, value="/hospitalstaff/{id}")
-//	public HospitalStaff addStaff(@RequestBody HospitalStaff staff) {
-//		hospitalStaffService.addStaff(staff);
-//		return staff;
-//	}
-//
-//	@RequestMapping(method=RequestMethod.DELETE, value="/hospitalstaff/{id}")
-//	public void deleteStaff(@RequestBody HospitalStaff staff) {
-//		hospitalStaffService.deleteStaff(staff);
-//	}
+	@RequestMapping("/distance/{toPostcode}")
+	public DistanceWrapper getStaff(@PathVariable String toPostcode) throws Exception {
+		System.out.println("toPostcode = " + toPostcode);
+		return distanceService.getNearestStaff(toPostcode);
+	}
 }

@@ -31,8 +31,8 @@ public class Distance {
 	
 	private static final Logger log = LoggerFactory.getLogger(Distance.class);
 		
-	public Person getClosestPerson(String toPostcode) throws Exception, Exception {
-		return getClosestPeople(1, toPostcode).first().person;
+	public DistanceWrapper getClosestPerson(String toPostcode) throws Exception, Exception {
+		return getClosestPeople(1, toPostcode).first();
 	}
 	
 	
