@@ -1,8 +1,11 @@
 package uk.org.getwellgamers.mapping;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +32,8 @@ public class Distance {
 
 	@Autowired
 	private StaffService staffservice;
+	
+	public static final double METERS_IN_A_MILE = 1609.34;
 
 	private static final Logger log = LoggerFactory.getLogger(Distance.class);
 
@@ -37,7 +42,7 @@ public class Distance {
 	}
 
 
-	public TreeSet<DistanceWrapper> getClosestPeople(int howMany, String toPostcode) throws Exception, IOException {
+	public Set<DistanceWrapper> getClosestPeople(int howMany, String toPostcode) throws Exception, IOException {
 
 		TreeSet<DistanceWrapper> distanceSet = new TreeSet<DistanceWrapper>();
 
@@ -54,11 +59,18 @@ public class Distance {
 			distanceSet.add(distWrap);
 		}
 
-		return distanceSet;
+		Set<DistanceWrapper> firstNElementsList = distanceSet.stream().limit(howMany).collect(Collectors.toSet());
+		
+		//TODO no need to cast?
+		return firstNElementsList;
 	}
 
 
 	public double getDistance(String pc1, String pc2) throws JsonProcessingException, IOException {
+
+		//TODO variable names
+		//apiKey from Config
+		//baseurl from config.
 
 		RestTemplate restTemplate = new RestTemplate();
 
@@ -79,7 +91,10 @@ public class Distance {
 		log.info("==== RESTful API Response using Spring RESTTemplate END =======");
 
 		JsonNode rows = root.path("rows").get(0).path("elements").get(0).path("distance").get("value");
-		return rows.asDouble() / 1609.34;  //TODO make const
+
+		//Covert to 2dp - precise enough.
+		DecimalFormat df2 = new DecimalFormat(".##");
+		return Double.parseDouble(df2.format(rows.asDouble() / METERS_IN_A_MILE)); 
 	}
 }
 
