@@ -2,7 +2,7 @@ package uk.org.getwellgamers.mapping;
 
 import uk.org.getwellgamers.person.Person;
 
-public class DistanceWrapper implements Comparable {
+public class DistanceWrapper implements Comparable<Object> {
 	
 	Person person;
 	double distance;

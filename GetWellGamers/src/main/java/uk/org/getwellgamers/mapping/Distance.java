@@ -1,6 +1,8 @@
 package uk.org.getwellgamers.mapping;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -38,11 +40,13 @@ public class Distance {
 	private static final Logger log = LoggerFactory.getLogger(Distance.class);
 
 	public DistanceWrapper getClosestPerson(String toPostcode) throws Exception, Exception {
-		return getClosestPeople(1, toPostcode).first();
+		Set<DistanceWrapper> ts = getClosestPeople(1, toPostcode);
+		Iterator<DistanceWrapper> iter = ts.iterator();
+		return iter.next();
 	}
 
 
-	public Set<DistanceWrapper> getClosestPeople(int howMany, String toPostcode) throws Exception, IOException {
+	public TreeSet<DistanceWrapper> getClosestPeople(int howMany, String toPostcode) throws Exception, IOException {
 
 		TreeSet<DistanceWrapper> distanceSet = new TreeSet<DistanceWrapper>();
 
@@ -59,9 +63,16 @@ public class Distance {
 			distanceSet.add(distWrap);
 		}
 
-		Set<DistanceWrapper> firstNElementsList = distanceSet.stream().limit(howMany).collect(Collectors.toSet());
+		TreeSet<DistanceWrapper> firstNElementsList = new TreeSet<DistanceWrapper>(); //(TreeSet<DistanceWrapper>) distanceSet.stream().limit(howMany).collect(Collectors.toSet());
+		Iterator<DistanceWrapper> iter = distanceSet.iterator();
 		
-		//TODO no need to cast?
+		int i=0;
+		while(iter.hasNext() && i<howMany) {
+			DistanceWrapper next = iter.next();
+			firstNElementsList.add(next);
+			i++;			
+		}
+				
 		return firstNElementsList;
 	}
 

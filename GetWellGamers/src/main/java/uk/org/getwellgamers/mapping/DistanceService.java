@@ -16,6 +16,6 @@ public class DistanceService {
 	}
 	
 	public TreeSet<DistanceWrapper> getClosestPeople(int howManyPeople,String toPostcode) throws Exception {
-		return distance.getClosestPeople(howManyPeople, toPostcode);
+		return (TreeSet<DistanceWrapper>) distance.getClosestPeople(howManyPeople, toPostcode);
 	}
 }
