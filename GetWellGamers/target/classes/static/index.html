@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 </head>
  
-    
-</head>
+  
 <body>
     <p>Get your greeting <a href="/greeting">here</a></p>
+    <div th:replace="templates/footer.html :: fr1"></div>
+    <div th:insert="footer :: copy">...</div>
     <div lang="en" th:replace="templates/footer :: footer"> </div>
     
 </body>
