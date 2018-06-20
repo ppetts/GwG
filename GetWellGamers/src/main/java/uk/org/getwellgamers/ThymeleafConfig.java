@@ -1,4 +1,4 @@
-package uk.org.getwellgamers;
+/*package uk.org.getwellgamers;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -17,7 +17,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 	@EnableWebMvc
-	@ComponentScan("com.thymeleafexamples")
+	@ComponentScan("uk.org.getwellgamers")
 	public class ThymeleafConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 	  private ApplicationContext applicationContext;
@@ -49,4 +49,4 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 	    resolver.setTemplateMode(TemplateMode.HTML);
 	    return resolver;
 	  }
-	}
+	}*/

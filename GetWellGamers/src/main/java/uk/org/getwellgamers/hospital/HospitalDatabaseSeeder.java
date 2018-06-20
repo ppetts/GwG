@@ -40,7 +40,7 @@ public class HospitalDatabaseSeeder implements CommandLineRunner {
 
 			} else {	
 
-				System.out.println("Adding " + hospDetails[7]);
+				//System.out.println("Adding " + hospDetails[7]);
 				hosp.setOrganisationID(hospDetails[0].replace("\"", ""));
 				hosp.setOrganisationCode(hospDetails[1]);
 				hosp.setOrganisationType(hospDetails[2]);

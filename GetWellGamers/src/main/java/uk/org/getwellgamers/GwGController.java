@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/help")
+@RequestMapping("/")
 class GwGController{
 
 	@RequestMapping(method = RequestMethod.GET)
 	  public String root(Locale locale, ModelMap model) {
-		   model.addAttribute("content", "GwGIndex");     
+		   //model.addAttribute("content", "GwGIndex");     
 		  // return "index";
-		   return   "redirect:resources/static/index.html";
+		   return   "redirect:index.html";
 		 
 	}
 }
