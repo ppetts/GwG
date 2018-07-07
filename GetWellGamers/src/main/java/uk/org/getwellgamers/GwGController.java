@@ -13,9 +13,6 @@ class GwGController{
 
 	@RequestMapping(method = RequestMethod.GET)
 	  public String root(Locale locale, ModelMap model) {
-		   //model.addAttribute("content", "GwGIndex");     
-		  // return "index";
-		   return   "redirect:index.html";
-		 
+		   return   "redirect:index.html";		 
 	}
 }
