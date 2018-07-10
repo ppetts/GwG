@@ -1,13 +1,10 @@
 package uk.org.getwellgamers.mapping;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,16 +16,11 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import uk.org.getwellgamers.person.Person;
 import uk.org.getwellgamers.staff.Staff;
 import uk.org.getwellgamers.staff.StaffService;
 
-//import com.google.maps.GeolocationApi.Response;
 
-
-//@Order(5)
 @Component
 public class Distance {
 
@@ -88,7 +80,6 @@ public class Distance {
 		String apiKey = "AIzaSyCtunvyfsw9jm4JV_6L4_dF_SXrDRGH12U";
 		String fooResourceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + pc1 + "&destinations=" + pc2 + "&mode=driving&language=GB&units=imperial&key=" + apiKey;
 		ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl, String.class);
-		//	assertThat(response.getStatusCode(), equals(HttpStatus.OK));
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode root = mapper.readTree(response.getBody());
 

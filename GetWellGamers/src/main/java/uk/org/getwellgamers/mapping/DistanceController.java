@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DistanceController {
 
 	@Autowired
-	DistanceService distanceService;
+	IDistanceController distanceService;
 
 	@RequestMapping("/distance/{toPostcode}")
 	public DistanceWrapper getStaff(@PathVariable String toPostcode) throws Exception {
@@ -23,7 +23,5 @@ public class DistanceController {
 	public TreeSet<DistanceWrapper> getxStaff(@PathVariable int howMany, @PathVariable String toPostcode) throws Exception {
 		System.out.println("toPostcode = " + toPostcode);
 		return distanceService.getClosestPeople(howMany, toPostcode);
-	}
-	
-	
+	}	
 }
