@@ -1,24 +1,29 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=1008414989306961&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id))
+			return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=1008414989306961&autoLogAppEvents=1';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <title>Get Well Gamers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <base href="/" />
 
-
 <link rel="stylesheet" type="text/css"
 	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/gwg_main.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -27,193 +32,32 @@
 	href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 </head>
 
-
 <body>
-	<p>
-		<a href="/admin.html">admin</a> (authentication required)
-	</p>
+
+<div id="fb-root"></div>
+	<header>
+		<div id="header" class="col-md-12">
+			<div class="col-lg-12">
+				<img alt="gwglogo" src="images/logo.svg" width="50px" height="50px"
+					style="padding: 2px;"> <span class="pull-right"><a href="/admin.html">admin</a></span>
+			</div>
+		</div>
+	</header>
+
+	<div id="social" class="col-lg-12">
+		<span class="fb-share-button"
+			data-href="http://www.getwellgamers.org.uk/" data-layout="button"
+			data-size="large" data-mobile-iframe="true"><a target="_blank"
+			href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.getwellgamers.org.uk%2F&amp;src=sdkpreparse"
+			class="fb-xfbml-parse-ignore">Share</a></span> <span><a
+			href="https://twitter.com/gwguk?ref_src=twsrc%5Etfw"
+			class="twitter-follow-button" data-show-count="false">Follow
+				@gwguk</a> <script async src="https://platform.twitter.com/widgets.js"
+				charset="utf-8"></script></span>
+	</div>
 	
-	<p><div class="fb-share-button" data-href="http://www.getwellgamers.org.uk/" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.getwellgamers.org.uk%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div></p>
-	<p><a href="https://twitter.com/gwguk?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @gwguk</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>
-	<!-- <p><a class="twitter-timeline" data-theme="light" href="https://twitter.com/gwguk?ref_src=twsrc%5Etfw">Tweets by gwguk</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	-->
-	<form>
-		<div id="tr_name" class="form-group">
-			<label class="col-xs-12 col-md-10 col-md-offset-2">title</label>
-			<div class="col-xs-12 col-sm-3 col-md-offset-2">
-				<select name="title" id="title" class="form-control">
-					<option value="" selected="">make a selection</option>
-					<option value="Mr">Mr</option>
-					<option value="Mrs">Mrs</option>
-					<option value="Miss">Miss</option>
-					<option value="Ms">Ms</option>
-					<option value="Dr">Dr</option>
-					<option value="Rev">Rev</option>
-					<option value="Sir">Sir</option>
-					<option value="Lord">Lord</option>
-					<option value="Professor">Professor</option>
-					<option value="Lady">Lady</option>
-					<option value="Dame">Dame</option>
-					<option value="Captain">Captain</option>
-				</select>
-			</div>
-		</div>
-
-		<div id="tr_personaldetails_name" class="form-group">
-			<label class="col-xs-12 col-md-10 col-md-offset-2">name</label>
-			<div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-2 ">
-				<div class="col-xs-6 no-error" style="padding-left: 0px">
-					<input name="Forename" value="" id="Forename" class="form-control"
-						autocomplete="given-name" placeholder="first name">
-				</div>
-				<div class="col-xs-6 no-error"
-					style="padding-left: 0px; padding-right: 0px;">
-					<input name="Surname" value="" id="Surname" class="form-control"
-						autocomplete="family-name" placeholder="surname">
-				</div>
-			</div>
-		</div>
-
-		<div id="tr_email" class="form-group">
-			<label class="col-xs-12 col-md-10 col-md-offset-2">email</label>
-			<div class="col-xs-12 col-sm-8 col-md-3 col-md-offset-2 app1">
-				<input name="aoApp1Email" value=""
-					data-linked-validation-field="#ConfirmApp1Email"
-					onblur="this.value=this.value.trim()" id="App1Email"
-					class="form-control" autocomplete="email" type="email"
-					placeholder="youremail@example.com"
-					onpaste="event.preventDefault();" oncopy="event.preventDefault();"
-					ondrag="event.preventDefault();" ondrop="event.preventDefault();">
-			</div>
-		</div>
-
-		<div id="tr_phoneno_mobile" class="form-group has-information">
-			<label class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">mobile
-				number</label>
-			<div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-2">
-				<div class="col-xs-6 no-error has-success" style="padding-left: 0px">
-					<label class="ii-select"> <input
-						name="%%Surrogate_aoApp1MobileCountry" type="hidden" value="1">
-					</label>
-				</div>
-				<div class="col-xs-6 no-error"
-					style="padding-left: 0px; padding-right: 0px;">
-					<input name="aoApp1Mobileno" value="" id="App1Mobileno"
-						class="form-control same" type="tel" pattern="[0-9]*"
-						autocomplete="mobile tel" placeholder="07..........">
-				</div>
-			</div>
-			<div class="information col-xs-12 col-sm-8 col-md-6 col-md-offset-2"
-				style="clear: left; float: left">your mobile number is used if
-				and when you need to reset your password</div>
-		</div>
-
-		<div class="col-xs-12 app1">
-			<div id="tr_currentaddress_applabel" class="form-group app-label">
-				<div class="col-xs-12">First Applicant</div>
-			</div>
-			<div id="tr_currentaddress_samecontact"
-				class="form-group app1 same-contact">
-				<label class="hidden-xs hidden-sm col-md-4">&nbsp;</label>
-				<div class="hidden-xs hidden-sm col-md-8">&nbsp;</div>
-			</div>
-			<div id="tr_currentaddress_postcode_app1"
-				class="form-group has-success" rel="tr_currentaddress_postcode_app1">
-				<label class="col-xs-12 col-md-10 col-md-offset-2">current
-					address</label>
-				<div class="col-xs-12 col-sm-8 col-md-3 col-md-offset-2">
-					<div class="col-xs-6 no-error has-success"
-						style="padding-left: 0px">
-
-						<input name="aoApp1Addr1Postcode" value=""
-							onblur="this.value = this.value.toUpperCase();
-return true;"
-							id="App1Addr1Postcode" class="form-control same"
-							autocomplete="postal-code" placeholder="post code">
-					</div>
-					<div class="col-xs-6 no-error"
-						style="padding-left: 0px; padding-right: 0px;">
-						<button class="btn btn-primary btn-block" href="javascript:"
-							onclick="_MyApplication.address.doQuery('App1Addr1'); return false;">
-							<span class="fas fa-search"
-								style="font-family: FontAwesome; padding-right: 15px;"></span>look
-							up
-						</button>
-					</div>
-					<div class="information"
-						style="display: none; clear: left; float: left margin-bottom:0px">post
-						code lookup is optional</div>
-				</div>
-				<div class="hidden-xs hidden-sm col-md-4 help aop-help">
-					<a rel="ADDR1POSTCODE" href="#" onclick="return false;"><span>Help</span></a>
-				</div>
-			</div>
-			<div id="tr_currentaddress_line1" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<input name="aoApp1Addr1Line1" value=""
-						id="App1Addr1Line1" class="form-control same"
-						autocomplete="address-line1" maxlength="40"
-						placeholder="address line 1">
-				</div>
-			</div>
-			<div id="tr_currentaddress_line2" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<input name="aoApp1Addr1Line2" value="" id="App1Addr1Line2"
-						class="form-control same" autocomplete="address-line2"
-						maxlength="40" placeholder="address line 2">
-				</div>
-			</div>
-			<div id="tr_currentaddress_line3" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<input name="aoApp1Addr1Line3" value="" id="App1Addr1Line3"
-						class="form-control same not-mandatory"
-						autocomplete="address-line3" maxlength="40"
-						placeholder="address line 3">
-				</div>
-			</div>
-			<div id="tr_currentaddress_line4" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<input name="aoApp1Addr1Line4" value="" id="App1Addr1Line4"
-						class="form-control same not-mandatory" autocomplete="OFF"
-						maxlength="40" placeholder="address line 4">
-				</div>
-			</div>
-			<div id="tr_currentaddress_line5" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<input name="aoApp1Addr1Line5" value="" id="App1Addr1Line5"
-						class="form-control same not-mandatory" autocomplete="OFF"
-						maxlength="40" placeholder="address line 5">
-				</div>
-			</div>
-			<div id="tr_currentaddress_country" class="form-group"
-				rel="tr_currentaddress_postcode_app1">
-				<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2"></div>
-				<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-2 has-success">
-					<label class="ii-select"> <input
-						name="%%Surrogate_aoApp1Addr1Country" type="hidden" value="1">
-						<select name="aoApp1Addr1Country" id="App1Addr1Country"
-						class="form-control same" autocomplete="country-name"
-						placeholder="country">
-							<option value="" selected="">make a selection</option>
-							<option value="GB">United Kingdom</option>
-							<option value="GG">Guernsey</option>
-							<option value="IM">Isle of Man</option>
-							<option value="JE">Jersey</option>
-					</select>
-					</label>
-				</div>
-			</div>
-	</form>
+	<footer>Phil Petts 2018 TM470</footer>
+   
 
 </body>
 </html>

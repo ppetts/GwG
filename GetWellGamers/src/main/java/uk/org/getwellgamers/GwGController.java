@@ -1,18 +1,16 @@
 package uk.org.getwellgamers;
 
-import java.util.Locale;
+import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@RequestMapping("/")
 class GwGController{
 
-	@RequestMapping(method = RequestMethod.GET)
-	  public String root(Locale locale, ModelMap model) {
-		   return   "redirect:index.html";		 
+	@GetMapping("/")
+	String index(Principal principal) {
+		//return principal == null ? "redirect:index.html" : "redirect:admin.html";
+		return "redirect:index.html";
 	}
 }

@@ -2,7 +2,12 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}"> -->
+
+<head lang="en">
 
 <script>
 	(function(d, s, id) {
@@ -34,6 +39,9 @@
 
 <body>
 
+<div th:replace="header :: header"/></div>
+
+
 <div id="fb-root"></div>
 	<header>
 		<div id="header" class="col-md-12">
@@ -55,8 +63,14 @@
 				@gwguk</a> <script async src="https://platform.twitter.com/widgets.js"
 				charset="utf-8"></script></span>
 	</div>
+	<!-- <p><a class="twitter-timeline" data-theme="light" href="https://twitter.com/gwguk?ref_src=twsrc%5Etfw">Tweets by gwguk</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	-->
 	
-	<footer>Phil Petts 2018 TM470</footer>
+	 <div th:replace="footer :: footer"></div>
+	 <div th:replace="base :: base"></div>
+	 <div th:insert="base :: base"></div>
+	
+	<div th:replace="fragments/footer :: footer"></div>
    
 
 </body>

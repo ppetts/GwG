@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import uk.org.getwellgamers.hospital.Hospital;
 import uk.org.getwellgamers.hospital.HospitalService;
-import uk.org.getwellgamers.person.Person;
 
 @Order(3)
 @Component

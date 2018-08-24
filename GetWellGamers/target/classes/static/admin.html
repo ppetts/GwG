@@ -15,10 +15,27 @@
 
 <link rel="stylesheet"
 	href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+
+
+<script>
+<script type="text/javascript">
+$.get("/user", function(data) {
+    $("#user").html(data.userAuthentication.details.name);
+    $(".unauthenticated").hide()
+    $(".authenticated").show()
+});
+</script>
+
+
 </head>
 
 
+
 <body>
+	<div class="container authenticated">
+		Logged in as: <span id="user"></span>
+	</div>
+
 	<h2>Admin Page</h2>
 	<ul>
 		<li><a href="users.html">Users</a></li>

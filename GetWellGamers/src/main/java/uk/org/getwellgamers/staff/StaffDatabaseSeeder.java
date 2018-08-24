@@ -14,10 +14,10 @@ import uk.org.getwellgamers.person.Person;
 public class StaffDatabaseSeeder implements CommandLineRunner {
 
 	//Generate the Staff Data for the Database 
-	private StaffRepositry staffResp;
+	private StaffRepository staffResp;
 
 	@Autowired
-	public StaffDatabaseSeeder(StaffRepositry staffResp) {
+	public StaffDatabaseSeeder(StaffRepository staffResp) {
 		this.staffResp = staffResp;
 	}
 
@@ -42,6 +42,7 @@ public class StaffDatabaseSeeder implements CommandLineRunner {
 		
 		Staff staff2 = new Staff();
 		staff2.setPersonId("002");
+		staff2.setPrincipalId("109079109643704089762");
 		staff2.setTitle(Person.TITLE.Mr);
 		staff2.setForename("Phil");
 		staff2.setSurname("Petts");

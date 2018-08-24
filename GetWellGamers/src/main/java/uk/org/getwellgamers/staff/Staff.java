@@ -1,20 +1,23 @@
 package uk.org.getwellgamers.staff;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import uk.org.getwellgamers.person.Person;
 
 @Entity
-public class Staff extends Person { //implements Comparable {
+public class Staff extends Person {
 
 	private String address1;
 	private String address2;
 	private String address3;
 	private String town;
 	private String postcode;
+	private String principalId;
 	
 	public Staff() {
 		super();
+		this.addRole(Person.ROLE.ADMIN);
 	}
 			
 	public String getAddress1() {
@@ -47,4 +50,10 @@ public class Staff extends Person { //implements Comparable {
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
+	public String getPrincipalId() {
+		return principalId;
+	}
+	public void setPrincipalId(String principalId) {
+		this.principalId = principalId;
+	}	
 }

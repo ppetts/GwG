@@ -10,13 +10,20 @@ import org.springframework.stereotype.Service;
 public class StaffService {
 
 	@Autowired
-	private StaffRepositry staffRep;
+	private StaffRepository staffRep;
 
 	public List<Staff> getAllStaff(){
 		List<Staff> allStaff = new ArrayList<Staff>();
 		staffRep.findAll().forEach(allStaff::add);
 		return allStaff;
 	}
+
+	//public List<Staff> getStaffbyPrincipalId(String principalId){
+		//return staffRep.findByPrincipalId(principalId);		
+	//}
+		
+		
+	
 
 	public Staff getStaff(String id) {
 		return staffRep.findOne(id);

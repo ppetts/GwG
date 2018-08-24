@@ -7,9 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import uk.org.getwellgamers.hospital.HospitalService;
 import uk.org.getwellgamers.hospitalstaff.HospitalStaff;
-import uk.org.getwellgamers.hospitalstaff.HospitalStaffRepositry;
 import uk.org.getwellgamers.hospitalstaff.HospitalStaffService;
 
 @Order(4)
