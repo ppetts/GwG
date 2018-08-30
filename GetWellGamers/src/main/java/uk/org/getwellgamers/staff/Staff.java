@@ -1,7 +1,6 @@
 package uk.org.getwellgamers.staff;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import uk.org.getwellgamers.person.Person;
 
@@ -17,7 +16,7 @@ public class Staff extends Person {
 	
 	public Staff() {
 		super();
-		this.addRole(Person.ROLE.ADMIN);
+		this.addRole("Admin");
 	}
 			
 	public String getAddress1() {

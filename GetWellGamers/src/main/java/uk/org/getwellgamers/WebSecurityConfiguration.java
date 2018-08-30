@@ -1,23 +1,32 @@
 package uk.org.getwellgamers;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.stereotype.Component;
 
 import uk.org.getwellgamers.person.Person;
-import uk.org.getwellgamers.staff.StaffRepository;
+import uk.org.getwellgamers.staff.Staff;
 import uk.org.getwellgamers.staff.StaffService;
 
 @EnableOAuth2Sso
 @Configuration
 @Order(1)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -31,73 +40,45 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.authenticated();
 	} 
 
+
 	@Bean
 	public PrincipalExtractor principalExtractor(StaffService staffService) {
 		return map -> {
 			String principalId = (String) map.get("id");
+			String forename = (String) map.get("given_name");
+			String surname = (String) map.get("family_name");
 
+			//Debug - printout every entry in the oAuth response
 			for (Entry<String, Object> entry : map.entrySet())
 			{
 				System.out.println(entry.getKey() + "/" + entry.getValue());
 			}
+	
+			Person user = null;
+			user = staffService.getStaff(staffService, principalId, forename, surname);
 
-			System.out.println("principalId=" + principalId);
-			//  System.out.println("email=" + email);
-
-			Person user = staffService.getStaff("002");
-		//	Person user = staffService.getStaffbyPrincipalId(principalId).get(0);
-
-			System.out.println(user.toString());
-
-			if (user == null) {
-				
-				System.out.println("No user found");
-				
-				
-				//                LOGGER.info("No user found, generating profile for {}", principalId);
-				//                user = new User();
-				//                user.setPrincipalId(principalId);
-				//                user.setCreated(LocalDateTime.now());
-				//                user.setEmail((String) map.get("email"));
-				//                user.setFullName((String) map.get("name"));
-				//                user.setPhoto((String) map.get("picture"));
-				//                user.setLoginType(UserLoginType.GOOGLE);
-				//                user.setLastLogin(LocalDateTime.now());
-			} else {
-				user.addRole(Person.ROLE.AUTH_GOOGLE);
-				// user.setLastLogin(LocalDateTime.now());
-			}
-
-			//            userRepository.save(user);
 			return user;
 		};
 	}
 
-	/*	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-		authenticationMgr.inMemoryAuthentication()
-			.withUser("jduser").password("jdu@123").authorities("ROLE_USER")
-			.and()
-			.withUser("jdadmin").password("jda@123").authorities("ROLE_USER","ROLE_ADMIN");
+
+	@Component
+	public class GooggleAuthoritiesExtractor implements AuthoritiesExtractor {
+		@Autowired
+		public StaffService staffService;
+		@Override
+		public List<GrantedAuthority> extractAuthorities(Map<String, Object> map) {
+			String principalId = (String) map.get("id");
+			String forename = (String) map.get("given_name");
+			String surname = (String) map.get("family_name");
+
+			Staff user = staffService.getStaff(staffService, principalId, forename, surname); 
+			if (user == null) {
+				return Collections.<GrantedAuthority> emptyList();
+			}
+			System.out.println(user.getRoles());
+			return AuthorityUtils.createAuthorityList(user.getRoles().stream().toArray(size -> new String[size]));
+		}
 	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-
-		http.authorizeRequests()
-			.antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-			.antMatchers("/userPage").access("hasRole('ROLE_USER')")
-			.antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
-			.and()
-				.formLogin().loginPage("/loginPage")
-				.defaultSuccessUrl("/homePage")
-				.failureUrl("/loginPage?error")
-				.usernameParameter("username").passwordParameter("password")				
-			.and()
-				.logout().logoutSuccessUrl("/loginPage?logout"); 
-
-	}*/
-
-
 
 }

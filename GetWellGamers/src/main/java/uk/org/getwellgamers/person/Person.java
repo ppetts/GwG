@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
-import uk.org.getwellgamers.person.Person.ROLE;
-
 @Entity
 @Inheritance
 public abstract class Person {
@@ -22,17 +20,19 @@ public abstract class Person {
 	private String surname;
 	private String mobilenumber;
 	private String telephonenumber;
-	private ArrayList<ROLE> roles = new ArrayList<ROLE>();
+	private ArrayList<String> roles = new ArrayList<String>();
 	
-	public ArrayList<ROLE> getRoles() {
+	
+	
+	public ArrayList<String> getRoles() {
 		return roles;
 	}
 	
-	public void addRole(ROLE role) {
+	public void addRole(String role) {
 		this.roles.add(role);
 	}
 	
-	public void setRoles(ArrayList<ROLE> roles) {
+	public void setRoles(ArrayList<String> roles) {
 		this.roles = roles;
 	}
 	

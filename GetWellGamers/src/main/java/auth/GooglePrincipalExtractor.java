@@ -29,7 +29,7 @@ public class GooglePrincipalExtractor implements PrincipalExtractor {
       user.setEmail(fbUser.getEmail());
       // Set the default Roles for users registered via Facebook
       user.setRoles(Sets.newHashSet(Role.ROLE_USER, Role.ROLE_USER_FACEBOOK));
-      user = userService.create(user);
+      user = staffService.create(user);
     }
     return user;
   }
